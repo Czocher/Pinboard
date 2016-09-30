@@ -57,10 +57,11 @@ public class UserController {
 		}
 		return "redirect:/";
 	}
+
 	@RequestMapping("/user/{login}")
-	public String panel(Model model){
-		model.addAttribute("login", session.getAttribute("login"));
-		model.addAttribute("password", session.getAttribute("password"));
+	public String panel(HttpServletRequest hsr, Model model){
+		model.addAttribute("login", hsr.getRemoteUser());
+		model.addAttribute("password", "nie mam skont");
 		System.out.println("dupa");
 		return "logged";
 	}
